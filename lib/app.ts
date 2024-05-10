@@ -2,17 +2,17 @@
 
 import express = require('express');
 import bodyParser = require('body-parser');
-import { Routes } from './routes/myRoutes';
+import { Routes } from './routes/myRoutes'; //importing Routes
 
 class App {
 
-    public app: express.Application;
-    public routerMyApp : Routes = new Routes;
+    public app: express.Application; //
+    public routerMyApp : Routes = new Routes; //creating a new Routes instance 
 
     constructor() {
         this.app = express();
         this.config();
-        this.routerMyApp.routes(this.app);
+        this.routerMyApp.routes(this.app); //using instance method to route the app
     }
 
     private config() : void {
