@@ -3,6 +3,7 @@
 import express = require('express');
 import bodyParser = require('body-parser');
 import { Routes } from './routes/myRoutes'; //importing Routes
+import mongoose from 'mongoose';
 
 class App {
 
@@ -16,11 +17,19 @@ class App {
     }
 
     private config() : void {
-        //Enable support for POST data of type json.
-        this.app.use(express.json());
-        //Enable support for POST data of type x-www-urlencoded.
-        this.app.use(express.urlencoded({ extended : true}));
+        
+        this.app.use(express.json()); //Enable support for POST data of type json.        
+        this.app.use(express.urlencoded({ extended : true})); //Enable support for POST data of type x-www-urlencoded.
+        this.setupDb();
     }
+
+    private setupDb() : void {
+        let mongourl = 'mongodb://localhost:27017/CompaniesTrack';
+        mongoose.Promise = global.Promise;
+        mongoose.connect(mongourl);
+    }
+
+    
 }
 
 export default new App().app;

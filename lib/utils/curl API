@@ -1,0 +1,3 @@
+#for saving companies
+curl --location 'http://localhost:3010/company' -H "Content-Type: application/json" -d @company.json
+where company.json is a json file with the parameters {"nameComp":"compis","emailComp":"email@yahoo.com"}
